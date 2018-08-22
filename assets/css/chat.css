@@ -5,8 +5,44 @@
 
 .chat {
     height: 85%;
+    overflow: scroll;
+}
+
+.chatbox {
+    padding: 15px;
+}
+
+.chatbox .cardbadge {
+    border-radius: 50%;
+    width: 55px;
+    min-width: 55px;
+    height: 55px;
+    text-align: center;
+    line-height: 55px;
+    font-size: 20px;
+    background-color: darkblue;
+    color: #fff;
+    margin: 5px auto;
+}
+
+.chatbox .chatcard {
+    background-color: lightblue;
+    border: darkblue;
+}
+
+.chatfooter {
+    font-size: 8px;
+    color: gray;
+    background-color: #fff;
+    height: 8px;
 }
 
 .chatInput {
     height: 15%;
+}
+
+.chat_list {
+  border-bottom: 1px solid #c4c4c4;
+  margin: 0;
+  padding: 18px 16px 10px;
 }
