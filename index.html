@@ -12,26 +12,23 @@
 
 <!-- Javascript Files -->
 <script src="https://www.gstatic.com/firebasejs/5.4.0/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAX0li5itgvRU6kvUHLleDWH-r1Fb0M12E",
-    authDomain: "carpoolapp-14ee6.firebaseapp.com",
-    databaseURL: "https://carpoolapp-14ee6.firebaseio.com",
-    projectId: "carpoolapp-14ee6",
-    storageBucket: "carpoolapp-14ee6.appspot.com",
-    messagingSenderId: "957003689395"
-  };
-  firebase.initializeApp(config);
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="assets/javascript/globals.js"></script>
+<script src="assets/javascript/authentication.js"></script>
 <script src="assets/javascript/chat.js"></script>
 
 </head>
 <body>
 
     
-    
+    <!-- Authentication Component -->
+    <div id="authComponent" class="container">
+        <div class="row">
+            <div class="col-6">
+                <button id="auth" class="btn btn-success btn-lrg"></button>
+            </div>
+        </div>
+    </div>
     
     
     
