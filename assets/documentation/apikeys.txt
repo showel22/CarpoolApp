@@ -1,0 +1,10 @@
+OpenWeatherMap:
+1ede66527ee8ef75941667ec8b7d7893
+
+MapQuest Traffic API:
+Consumer Key	R2POye2cSeMlUA3OSTAUv7Tr5qN3UvAL
+Consumer Secret	WMnewbYO78HvZ2vY
+
+DarkSky Weather API:
+6a3c504e7f07a728dd1e5e3f916963b4
+
