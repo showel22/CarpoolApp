@@ -1,0 +1,12 @@
+#chatContainer {
+    height: 500px;
+    border: 1px solid grey;
+}
+
+.chat {
+    height: 85%;
+}
+
+.chatInput {
+    height: 15%;
+}
