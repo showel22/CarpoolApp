@@ -1,4 +1,4 @@
-var config = {
+var firebaseConfig = {
     apiKey: "AIzaSyAX0li5itgvRU6kvUHLleDWH-r1Fb0M12E",
     authDomain: "carpoolapp-14ee6.firebaseapp.com",
     databaseURL: "https://carpoolapp-14ee6.firebaseio.com",
@@ -6,7 +6,7 @@ var config = {
     storageBucket: "carpoolapp-14ee6.appspot.com",
     messagingSenderId: "957003689395"
 };
-firebase.initializeApp(config);
+firebase.initializeApp(firebaseConfig);
 
 // Global variable to hold current user
 var USER;

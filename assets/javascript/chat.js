@@ -5,8 +5,10 @@ $(document).ready(() => {
 
     var view = $('#chatBoxes');
 
-    $('#submitChat').click(function(){
+    $('#submitChat').click(function(event){
+         event.preventDefault();
         var text = $('#chatInput').val().trim();
+        $('#chatInput').val('');
         
         database.ref('/chat').push({
             text: text,
@@ -32,9 +34,8 @@ $(document).ready(() => {
         chatBadgeContainer.append(chatBadge);
         chatBox.append(chatBadgeContainer);
         chatBox.append(chatCardContainer);
-        console.log(chatBox.prop('scrollHeight'));
-        chatBox.scrollTop = chatBox.scrollHeight;
         view.append(chatBox);
+        $('#chat').scrollTop($('#chat').prop('scrollHeight'));
     });
 
 });
