@@ -1,6 +1,5 @@
 #chatContainer {
     height: 500px;
-    border: 1px solid grey;
 }
 
 #chat {
@@ -9,7 +8,7 @@
 }
 
 .chatbox {
-    padding: 15px;
+    padding: 2px;
 }
 
 .chatbox .cardbadge {
@@ -27,14 +26,19 @@
 
 .chatbox .chatcard {
     background-color: lightblue;
-    border: darkblue;
 }
 
-.chatfooter {
-    font-size: 8px;
-    color: gray;
-    background-color: #fff;
-    height: 8px;
+.chatbox .currentCard {
+    background-color: teal;
+    color: #fff;
+    text-align: right;
+}
+
+.chatMeta {
+    color: grey;
+    font-size: 10px;
+    padding: 5px;
+    margin-bottom: 0;
 }
 
 .chatInput {

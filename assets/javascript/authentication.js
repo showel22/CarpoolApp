@@ -14,6 +14,7 @@ $(document).ready(() => {
             $('#auth').text('Sign In');
             USER = undefined;
             USER_TOKEN = undefined;
+            UID = undefined;
             firebase.auth().signOut().then(function () {
                 // Sign-out successful.
                 console.log("Signed Out");
@@ -28,7 +29,14 @@ $(document).ready(() => {
                     USER_TOKEN = result.credential.accessToken;
                 }
                 // Set the User
-                USER = result.user;
+                var user = firebase.auth().currentUser;
+                USER = {
+                    name: user.displayName,
+                    email: user.email,
+                    photoUrl: user.photoURL,
+                    emailVerified: user.emailVerified,
+                    uid: user.uid
+                };
 
             }).catch(function (error) {
                 var errorCode = error.code;
