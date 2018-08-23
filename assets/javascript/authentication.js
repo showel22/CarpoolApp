@@ -3,15 +3,17 @@ $(document).ready(() => {
     var authentication = firebase.auth();
     var googleProvider = new firebase.auth.GoogleAuthProvider();
 
-    if (!USER) {
+    if (USER === undefined) {
         $('#auth').text('Sign In');
     } else {
         $('#auth').text('Sign Out');
     }
 
     $('#auth').click(function () {
-        if (!USER) {
-            $('#auth').text('Sign Out');
+        if (USER != undefined) {
+            $('#auth').text('Sign In');
+            USER = undefined;
+            USER_TOKEN = undefined;
             firebase.auth().signOut().then(function () {
                 // Sign-out successful.
                 console.log("Signed Out");
@@ -20,7 +22,7 @@ $(document).ready(() => {
                 console.log("Error on Sign Out");
             });
         } else {
-            $('#auth').text('Sign In');
+            $('#auth').text('Sign Out');
             authentication.signInWithPopup(googleProvider).then(function (result) {
                 if (result.credential) {
                     USER_TOKEN = result.credential.accessToken;
