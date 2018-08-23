@@ -1,11 +1,10 @@
 #map {
     width: 50%;
     height: 530px;
-    border: 1px solid grey;
+    float: left;
 }
 
 #showWeather {
     width: 25%;
     height: 530px;
-    border: 1px solid grey;
 }
