@@ -10,4 +10,13 @@ firebase.initializeApp(firebaseConfig);
 
 // Global variable to hold current user
 var USER;
+
+// Test Data
+USER = {
+    name: 'Steven Howell',
+    email: 'schyoyo@gmail.com',
+    photoUrl: 'https://lh6.googleusercontent.com/-FcMjZM1Q0co/AAAAAAAAAAI/AAAAAAAABN4/l6C7x3_tFDI/photo.jpg',
+    emailVerified: true,
+    uid: 'syGrikJ6w5OzYFLWdI66Tz5h4Kh1'
+};
 var USER_TOKEN;
