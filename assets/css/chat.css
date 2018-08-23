@@ -3,7 +3,7 @@
     border: 1px solid grey;
 }
 
-.chat {
+#chat {
     height: 85%;
     overflow: scroll;
 }

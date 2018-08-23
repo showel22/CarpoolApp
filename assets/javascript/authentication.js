@@ -3,14 +3,14 @@ $(document).ready(() => {
     var authentication = firebase.auth();
     var googleProvider = new firebase.auth.GoogleAuthProvider();
 
-    if (!!USER_TOKEN) {
-        $('#auth').text('Sign Out');
-    } else {
+    if (!USER) {
         $('#auth').text('Sign In');
+    } else {
+        $('#auth').text('Sign Out');
     }
 
     $('#auth').click(function () {
-        if (!!USER_TOKEN) {
+        if (!USER) {
             $('#auth').text('Sign Out');
             firebase.auth().signOut().then(function () {
                 // Sign-out successful.
