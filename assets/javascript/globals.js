@@ -37,7 +37,7 @@ var CURRENT_PAGE = {
 };
 
 // Test Data Comment this out before committing
-/*
+
 USER = {
     name: 'Steven Howell',
     email: 'schyoyo@gmail.com',
@@ -45,9 +45,9 @@ USER = {
     emailVerified: true,
     uid: 'syGrikJ6w5OzYFLWdI66Tz5h4Kh1'
 };
-*/
+
 
 $(document).ready(function () {
     CURRENT_PAGE.login();
-    //CURRENT_PAGE.schedule();
+    CURRENT_PAGE.schedule();
 });

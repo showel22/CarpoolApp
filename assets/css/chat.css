@@ -1,9 +1,5 @@
-#chatContainer {
-    height: 500px;
-}
-
 #chat {
-    height: 600px;
+    height: 450px;
     overflow: scroll;
 }
 

@@ -9,3 +9,7 @@
 #backToSchedule:hover {
     cursor: pointer;
 }
+
+.highlight:hover{
+    cursor: pointer;
+}
