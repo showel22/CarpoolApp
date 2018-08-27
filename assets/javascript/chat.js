@@ -35,13 +35,13 @@ $(document).ready(() => {
             timestamp.text(moment(chat.timestamp).calendar());
             metaContainer.append(timestamp);
             chatBox.addClass('chat-item');
-        }else if(!!previousChat && previousChat.user != chat.user){
+        } else if (!!previousChat && previousChat.user != chat.user) {
             var metaContainer = $('<div class="title">');
             var timestamp = $('<div class="center-align meta-text">');
             timestamp.text(moment(chat.timestamp).calendar());
             metaContainer.append(timestamp);
             chatBox.addClass('chat-item');
-        }else if(!previousChat){
+        } else if (!previousChat) {
             var metaContainer = $('<div class="title">');
             var timestamp = $('<div class="center-align meta-text">');
             timestamp.text(moment(chat.timestamp).calendar());
@@ -74,13 +74,13 @@ $(document).ready(() => {
             timestamp.text(moment(chat.timestamp).calendar());
             metaContainer.append(timestamp);
             chatBox.addClass('chat-item');
-        }else if(!!previousChat && previousChat.user != chat.user){
+        } else if (!!previousChat && previousChat.user != chat.user) {
             var metaContainer = $('<div class="title meta-text">');
             var timestamp = $('<div class="center-align">');
             timestamp.text(moment(chat.timestamp).calendar());
             metaContainer.append(timestamp);
             chatBox.addClass('chat-item');
-        }else if(!previousChat){
+        } else if (!previousChat) {
             var metaContainer = $('<div class="title meta-text">');
             var timestamp = $('<div class="center-align">');
             timestamp.text(moment(chat.timestamp).calendar());
@@ -107,9 +107,15 @@ $(document).ready(() => {
         });
     });
 
-    database.ref('/chat').on('child_added', function (snapshot) {
-        var sv = snapshot.val();
-        chats.addChat(sv);
-    });
+    $(document).on('click', '.tripRow', function(event){
+        showChat();
+    }.bind(this));
+
+    function showChat() {
+        database.ref('/chat').on('child_added', function (snapshot) {
+            var sv = snapshot.val();
+            chats.addChat(sv);
+        });
+    }
 
 });

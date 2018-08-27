@@ -17,21 +17,18 @@ var START_LOCATION = '';
 var CURRENT_PAGE = {
     page: "LOGIN",
     login: function () {
-        console.log('Auth');
         this.page = "LOGIN";
         $('#authComponent').removeClass('hide');
         $('#scheduleComponent').addClass('hide');
         $('#tripComponent').addClass('hide');
     },
     schedule: function () {
-        console.log('Schedule');
         this.page = 'SCHEDULE';
         $('#authComponent').addClass('hide');
         $('#scheduleComponent').removeClass('hide');
         $('#tripComponent').addClass('hide');
     },
     trip: function () {
-        console.log('Trip');
         this.page = "TRIP";
         $('#authComponent').addClass('hide');
         $('#scheduleComponent').addClass('hide');
@@ -40,7 +37,6 @@ var CURRENT_PAGE = {
 };
 
 // Test Data Comment this out before committing
-/* 
 USER = {
     name: 'Steven Howell',
     email: 'schyoyo@gmail.com',
@@ -48,8 +44,8 @@ USER = {
     emailVerified: true,
     uid: 'syGrikJ6w5OzYFLWdI66Tz5h4Kh1'
 };
-*/
+
 $(document).ready(function () {
     CURRENT_PAGE.login();
-    //CURRENT_PAGE.schedule();
+    CURRENT_PAGE.schedule();
 });
