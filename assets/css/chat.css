@@ -3,50 +3,32 @@
 }
 
 #chat {
-    height: 85%;
+    height: 600px;
     overflow: scroll;
 }
 
-.chatbox {
-    padding: 2px;
+#chat li {
+    border: none !important;
 }
 
-.chatbox .cardbadge {
-    border-radius: 50%;
-    width: 55px;
-    min-width: 55px;
-    height: 55px;
-    text-align: center;
-    line-height: 55px;
-    font-size: 20px;
-    background-color: darkblue;
-    color: #fff;
-    margin: 5px auto;
+#chatBoxes {
+    border: none;
 }
 
-.chatbox .chatcard {
-    background-color: lightblue;
+.chat-item {
+    border: none !important;
+    border-radius: 5px;
 }
 
-.chatbox .currentCard {
-    background-color: teal;
-    color: #fff;
-    text-align: right;
+.innitial {
+    line-height: 40px;
 }
 
-.chatMeta {
-    color: grey;
-    font-size: 10px;
-    padding: 5px;
-    margin-bottom: 0;
+.meta-text {
+    font-size: 12px !important;
 }
 
-.chatInput {
-    height: 15%;
-}
-
-.chat_list {
-  border-bottom: 1px solid #c4c4c4;
-  margin: 0;
-  padding: 18px 16px 10px;
+.chat-item {
+    margin-top: 5px !important;
+    border: none !important;
 }

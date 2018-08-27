@@ -1,5 +1,11 @@
 $(document).ready(() => {
 
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (!user) {
+            CURRENT_PAGE.login();
+        }
+    });
+
     var authentication = firebase.auth();
     var googleProvider = new firebase.auth.GoogleAuthProvider();
 
@@ -10,7 +16,7 @@ $(document).ready(() => {
     }
 
     $('#auth').click(function () {
-        if (USER != undefined) {
+        if (USER == undefined) {
             $('#auth').text('Sign In');
             USER = undefined;
             USER_TOKEN = undefined;
@@ -37,6 +43,7 @@ $(document).ready(() => {
                     emailVerified: user.emailVerified,
                     uid: user.uid
                 };
+                CURRENT_PAGE.schedule();
 
             }).catch(function (error) {
                 var errorCode = error.code;

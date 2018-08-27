@@ -5,95 +5,170 @@
     <meta charset="UTF-8">
     <title>Carpool App</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- Style Sheets -->
     <link rel="stylesheet" href="assets/css/chat.css" />
     <link rel="stylesheet" href="assets/css/maps.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/schedule.css" />
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet"
     />
     <!--Mapquest Files-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
-    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
     <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
-    <!-- Javascript Files -->
+    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+    <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.4.0/firebase.js"></script>
+    <!-- Jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Moment -->
     <script src="assets/javascript/moment.js"></script>
+    <!-- Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <!-- Javascript Files -->
     <script src="assets/javascript/globals.js"></script>
     <script src="assets/javascript/authentication.js"></script>
     <script src="assets/javascript/chat.js"></script>
     <script src="assets/javascript/maps.js"></script>
-    <!--Materialize Files-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <script src="assets/javascript/schedule.js"></script>
 </head>
 
 <body>
 
+    <nav>
+        <div class="nav-wrapper teal">
+            <a href="#" class="brand-logo">How will I get to class?</a>
+            <p id="currentUser"></p>
+        </div>
+    </nav>
+
 
     <!-- Authentication Component -->
-    <div id="authComponent" class="container">
+    <div id="authComponent" class="container hide">
         <div class="row">
-            <div class="col-6">
-                <button id="auth" class="btn btn-success btn-lrg"></button>
+            <div class="col s12 offset-m3 m6">
+                <div class="card center center-align">
+                    <div class="card-title white-text teal lighten-2">Log In</div>
+                    <div class="card-content">
+                        <p>Log in with your google account by clicking the button below.</p>
+                    </div>
+                    <div class="card-action">
+                        <button id="auth" class="btn teal lighten-2"></button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Schedule Component -->
-    <div id="scheduleComponent" class="container">
-        <table class="table">
+    <div id="scheduleComponent" class="container hide">
+        <table class="table striped">
             <thead>
-                <tr>
-                    <th scope="col">#</th>
+                <tr class="">
                     <th scope="col">Driver</th>
                     <th scope="col">Seats Remaining</th>
+                    <th scope="col">Departure Date</th>
                     <th scope="col">Departure Time</th>
                     <th scope="col">Start Location</th>
                 </tr>
             </thead>
             <tbody id="scheduleBody">
-                <tr>
-                    <td id="addTrip" colspan="5" class="text-center">Add Trip</td>
-                </tr>
+                <!-- Content added by javascript -->
             </tbody>
-        <table>
-    </div>
+        </table>
+        <button id="openForm" type="button" class="btn-floating btn-large teal right waves-effect waves-light">
+             <i class="large fa fa-plus"></i>
+        </button>
 
-    <!--Location Source Selection-->
-    <div class="input-field col s3">
-        <select name="locationDropdown">
-            <option value="" disabled selected>Choose your Start Location</option>
-            <option value="3475 Piedmont Road Atlanta, GA">Buckhead Hub</option>
-            <option value="1001 Windward Parkway Alpharetta, GA">Alpharetta Hub</option>
-        </select>
-    </div>
+        <!-- Schedule Form -->
+        <div id="scheduleForm" class="container scale-transition scale-out hide">
 
-    <div id='map'></div>
-    <div id='showWeather'></div>
-
-    <!-- Chat Component -->
-    <div id="chatContainer" class="container">
-        <div id="chat" class="row">
-            <div id="chatBoxes" class="chat col-12">
-                <!-- Content Added by Javascript -->
-            </div>
-        </div>
-        <div class="row chatInput">
-            <div class="col-12">
-                <form class="input-group">
-                    <input id="chatInput" type="text" class="form-control" placeholder="Type a message..." aria-label="Chat Input" aria-describedby="basic-addon2">
-                    <div class="input-group-btn">
-                            <button id="submitChat" class="btn btn-success" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-                            <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                        </button>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="0" id="num_seats" type="number" class="validate">
+                            <label for="num_seats">Number of Passenger Seats:</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <select id="startLocation">
+                            <option value="" disabled selected>Choose your Start Location</option>
+                            <option value="3475 Piedmont Road Atlanta, GA">Buckhead Hub</option>
+                            <option value="1001 Windward Parkway Alpharetta, GA">Alpharetta Hub</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="departDate" type="text" class="datepicker">
+                            <label for="num_seats">What day are you leaving:</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="departTime" type="text" class="timepicker">
+                            <label for="num_seats">What time are you leaving:</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col offset-s10 s2">
+                            <button id="addTrip" class="btn waves-effect waves-light right-align" type="submit">Add Trip</button>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
+
+    </div>
+
+    <!--Location Source Selection-->
+    <div id="tripComponent" class="container hide">
+        <br />
+        <div class="row">
+            <div class="col s4">
+                <a id="backToSchedule" class="teal-text">
+                    <h5>
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>  Back to Schedule
+                    </h5>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+
+            <!-- Chat Component -->
+            <div class="col s6 push-s6">
+                <div id="chat" class="chat ">
+                    <ul id="chatBoxes" class="chat collection">
+                        <!-- Content Added by Javascript -->
+                    </ul>
+                </div>
+                <div class="chatInput ">
+                    <form class="input-field row">
+                        <input id="chatInput" type="text" class="col s10" placeholder="Type a message..." aria-label="Chat Input" aria-describedby="basic-addon2">
+                        <button id="submitChat" class="btn col s2" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col s6 pull-s6">
+                <div class="input-field">
+                    <select name="locationDropdown">
+                        <option value="" disabled selected>Choose your Start Location</option>
+                        <option value="3475 Piedmont Road Atlanta, GA">Buckhead Hub</option>
+                        <option value="1001 Windward Parkway Alpharetta, GA">Alpharetta Hub</option>
+                    </select>
+                </div>
+
+                <div id='map'></div>
+                <div id='showWeather'></div>
+
+            </div>
+
+        </div>
+
     </div>
 
 </body>

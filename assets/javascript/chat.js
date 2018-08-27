@@ -24,38 +24,32 @@ $(document).ready(() => {
         if (conversation.length > 1) {
             previousChat = conversation[conversation.length - 2];
         }
-        var chatBox = $('<div class="chatbox row">');
-        var chatCardContainer = $('<div class="offset-4 col-8">');
-        var chatCard = $('<div class="chatcard card currentCard">');
-        var chatCardBody = $('<div class="card-body">');
-        var chatCardText = $('<p class="card-text">');
-        chatCardText.text(chat.text);
-        chatCardBody.append(chatCardText);
-        chatCard.append(chatCardBody);
-        chatCardContainer.append(chatCard);
-        chatBox.append(chatCardContainer);
+        var chatBox = $('<li class="collection-item white-text cyan lighten-3">');
+        var chatBoxText = $('<p class="right-align">');
+        chatBoxText.text(chat.text);
+        chatBox.append(chatBoxText);
 
         if (!!previousChat && previousChat.user === chat.user && moment(chat.timestamp).diff(moment(previousChat.timestamp)) > 1000 * 60) {
-            var metaContainer = $('<div class="row chatMeta">');
-            var timestamp = $('<span class="col-12 text-center">');
-            chatBox.addClass('snap');
+            var metaContainer = $('<div class="title">');
+            var timestamp = $('<div class="center-align meta-text">');
             timestamp.text(moment(chat.timestamp).calendar());
             metaContainer.append(timestamp);
+            chatBox.addClass('chat-item');
         }else if(!!previousChat && previousChat.user != chat.user){
-            var metaContainer = $('<div class="row chatMeta">');
-            var timestamp = $('<span class="col-12 text-center">');
-            chatBox.addClass('snap');
+            var metaContainer = $('<div class="title">');
+            var timestamp = $('<div class="center-align meta-text">');
             timestamp.text(moment(chat.timestamp).calendar());
             metaContainer.append(timestamp);
+            chatBox.addClass('chat-item');
         }else if(!previousChat){
-            var metaContainer = $('<div class="row chatMeta">');
-            var timestamp = $('<span class="col-12 text-center">');
-            chatBox.addClass('snap');
+            var metaContainer = $('<div class="title">');
+            var timestamp = $('<div class="center-align meta-text">');
             timestamp.text(moment(chat.timestamp).calendar());
             metaContainer.append(timestamp);
+            chatBox.addClass('chat-item');
         }
 
-        view.append(metaContainer);
+        chatBox.prepend(metaContainer);
         view.append(chatBox);
         $('#chat').scrollTop($('#chat').prop('scrollHeight'));
     }
@@ -66,43 +60,35 @@ $(document).ready(() => {
         if (conversation.length > 1) {
             previousChat = conversation[conversation.length - 2];
         }
-        var chatBox = $('<div class="chatbox row">');
-        var chatBadgeContainer = $('<div class="col-1">');
-        var chatBadge = $('<div class="cardbadge">');
-        var chatCardContainer = $('<div class="col-8">');
-        var chatCard = $('<div class="chatcard card">');
-        var chatCardBody = $('<div class="card-body">');
-        var chatCardText = $('<p class="card-text">');
-        chatCardText.text(chat.text);
-        chatCardBody.append(chatCardText);
-        chatCard.append(chatCardBody);
-        chatCardContainer.append(chatCard);
-        chatBadge.text(chat.innitial);
-        chatBadgeContainer.append(chatBadge);
-        chatBox.append(chatBadgeContainer);
-        chatBox.append(chatCardContainer);
+        var chatBox = $('<li class="collection-item avatar white-text teal lighten-3 chat-item">');
+        var chatBoxText = $('<p class="left-align">');
+        var img = $('<span class="circle center-align teal white-text valign-wrapper innitial">');
+        img.text(chat.innitial);
+        chatBoxText.text(chat.text);
+        chatBox.append(img);
+        chatBox.append(chatBoxText);
 
         if (!!previousChat && previousChat.user === chat.user && moment(chat.timestamp).diff(moment(previousChat.timestamp)) > 1000 * 60) {
-            var metaContainer = $('<div class="row chatMeta">');
-            var timestamp = $('<span class="col-12 text-center">');
-            chatBox.addClass('snap');
+            var metaContainer = $('<div class="title meta-text">');
+            var timestamp = $('<div class="center-align">');
             timestamp.text(moment(chat.timestamp).calendar());
             metaContainer.append(timestamp);
+            chatBox.addClass('chat-item');
         }else if(!!previousChat && previousChat.user != chat.user){
-            var metaContainer = $('<div class="row chatMeta">');
-            var timestamp = $('<span class="col-12 text-center">');
-            chatBox.addClass('snap');
+            var metaContainer = $('<div class="title meta-text">');
+            var timestamp = $('<div class="center-align">');
             timestamp.text(moment(chat.timestamp).calendar());
             metaContainer.append(timestamp);
+            chatBox.addClass('chat-item');
         }else if(!previousChat){
-            var metaContainer = $('<div class="row chatMeta">');
-            var timestamp = $('<span class="col-12 text-center">');
-            chatBox.addClass('snap');
+            var metaContainer = $('<div class="title meta-text">');
+            var timestamp = $('<div class="center-align">');
             timestamp.text(moment(chat.timestamp).calendar());
             metaContainer.append(timestamp);
+            chatBox.addClass('chat-item');
         }
 
-        view.append(metaContainer);
+        chatBox.prepend(metaContainer);
         view.append(chatBox);
         $('#chat').scrollTop($('#chat').prop('scrollHeight'));
     }
