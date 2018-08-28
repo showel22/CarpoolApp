@@ -34,9 +34,9 @@
     <!-- Javascript Files -->
     <script src="assets/javascript/globals.js"></script>
     <script src="assets/javascript/authentication.js"></script>
-    <script src="assets/javascript/maps.js"></script>
     <script src="assets/javascript/schedule.js"></script>
     <script src="assets/javascript/chat.js"></script>
+    <script src="assets/javascript/maps.js"></script>
 </head>
 
 <body>
@@ -83,7 +83,7 @@
             </tbody>
         </table>
         <button id="openForm" data-target="scheduleForm" type="button" class="btn-floating btn-large teal right waves-effect waves-light modal-trigger">
-             <i class="large fa fa-plus"></i>
+            <i class="large fa fa-plus"></i>
         </button>
 
         <!-- Schedule Form -->
@@ -136,7 +136,7 @@
             <div class="col s4">
                 <a id="backToSchedule" class="teal-text">
                     <h5>
-                        <i class="fa fa-arrow-left" aria-hidden="true"></i>  Back to Schedule
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Schedule
                     </h5>
                 </a>
             </div>
@@ -153,28 +153,27 @@
                 <div class="chatInput ">
                     <form class="input-field row">
                         <input id="chatInput" type="text" class="col s10" placeholder="Type a message..." aria-label="Chat Input" aria-describedby="basic-addon2">
-                        <button id="submitChat" class="btn col s2" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                        <button id="submitChat" class="btn col s2" type="submit">
+                            <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                        </button>
                     </form>
                 </div>
             </div>
 
             <div class="col s6 pull-s6">
-                <div class="input-field">
-                    <select name="locationDropdown">
-                        <option value="" disabled selected>Choose your Start Location</option>
-                        <option value="3475 Piedmont Road Atlanta, GA">Buckhead Hub</option>
-                        <option value="1001 Windward Parkway Alpharetta, GA">Alpharetta Hub</option>
-                    </select>
-                </div>
-
                 <div id='map'></div>
-                <div id='showWeather'></div>
-
             </div>
 
         </div>
-
+        <div class="container">
+            <div class="row">
+                <div class="col s6 push-s6">
+                    <div id='weather'></div>
+                </div>
+            </div>
+        </div>
     </div>
+
 
 </body>
 
