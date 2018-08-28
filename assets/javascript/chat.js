@@ -98,7 +98,7 @@ $(document).ready(() => {
         var text = $('#chatInput').val().trim();
         $('#chatInput').val('');
         var nameArray = USER.name.split(' ');
-        database.ref('/chat').push({
+        database.ref('chats/' + TRIP).push({
             text: text,
             innitial: nameArray[0].charAt(0) + nameArray[1].charAt(0),
             user: USER.uid,
@@ -112,7 +112,7 @@ $(document).ready(() => {
     }.bind(this));
 
     function showChat() {
-        database.ref('/chat').on('child_added', function (snapshot) {
+        database.ref('chats/' + TRIP).on('child_added', function (snapshot) {
             var sv = snapshot.val();
             chats.addChat(sv);
         });

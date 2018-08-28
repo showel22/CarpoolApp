@@ -2,31 +2,24 @@ $(document).ready(function(){
     
     var database = firebase.database();
 
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({
+        defaultDate: new Date(),
+        minDate: new Date(),
+        yearRange: 1
+    });
 
     $('.timepicker').timepicker();
+
+    $('.modal').modal();
 
     $('.fixed-action-btn').floatingActionButton({
         direction: 'right',
         hoverEnabled: false
     });
 
-    $('#openForm').click(function(event){
-        var scheduleForm = $('#scheduleForm');
-
-        if(scheduleForm.hasClass('scale-out')){
-            scheduleForm.removeClass('hide');
-            scheduleForm.removeClass('scale-out');
-            scheduleForm.addClass('scale-in');
-        }else{
-            scheduleForm.addClass('hide');
-            scheduleForm.removeClass('scale-in');
-            scheduleForm.addClass('scale-out');
-        }
-    });
-
     $(document).on('click', '.tripRow', function(event){
-        var id = $(this).attr('data-id');
+        var element = $(event.target).closest('tr')[0];
+        var id = $(element).attr('data-id');
         TRIP = id;
         CURRENT_PAGE.trip();
     }.bind(this));
@@ -64,6 +57,10 @@ $(document).ready(function(){
         var leavingDate = $('#departDate').val().trim();
         var leavingTime = $('#departTime').val().trim();
 
+        if(seatNum === '' || startLocation === '' || leavingDate === '' || leavingTime === ''){
+            return;
+        }
+
         database.ref('/trips').push({
             driver: USER.uid,
             driverName: USER.name,
@@ -74,10 +71,13 @@ $(document).ready(function(){
             timestamp: firebase.database.ServerValue.TIMESTAMP
         });
 
-        $('#num_seats').val().trim('');
-        $('#startLocation').val().trim('');
-        $('#departDate').val().trim('');
-        $('#departTime').val().trim('');
+        $('#num_seats').val('');
+        $('#startLocation').val('');
+        $('#departDate').val('');
+        $('#departTime').val('');
+
+        var instance = M.Modal.getInstance(document.getElementById('scheduleForm'));
+        instance.close();
 
     });
 
