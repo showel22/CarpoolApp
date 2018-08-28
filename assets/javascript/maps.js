@@ -20,7 +20,7 @@ $(document).ready(function () {
                 options: {
                     enhancedNarrative: true,
                 }
-            }, getWeather)
+            }, createMap)
         }
 
 
@@ -28,7 +28,7 @@ $(document).ready(function () {
         function getWeather() {
             console.log("Iam Running!")
             $.ajax({
-                url: 'http://api.openweathermap.org/data/2.5/weather?zip=30308' + '&units=metric' + '&APPID=1ede66527ee8ef75941667ec8b7d7893',
+                url: 'https://api.openweathermap.org/data/2.5/weather?zip=30308' + '&units=metric' + '&APPID=1ede66527ee8ef75941667ec8b7d7893',
                 type: "GET",
                 dataType: "jsonp",
                 success: function (data) {
@@ -52,7 +52,7 @@ $(document).ready(function () {
 
         function showWeather(data) {
             return '<h4>Current Conditions:</h4>' +
-                "<img src='http://openweathermap.org/img/w/" + data.weather[0].icon + ".png'>"
+                "<img src='https://openweathermap.org/img/w/" + data.weather[0].icon + ".png'>"
                 + data.weather[0].main +
                 "<h6>Humidity: " + data.main.humidity + "%</h6>" +
                 "<h6>Sunrise: " + toTimeString(data.sys.sunrise) + "</h6>" +
@@ -90,6 +90,7 @@ $(document).ready(function () {
                 interative: true
             });
             narrativeControl.setDirectionsLayer(directionsLayer);
+            getWeather();
         }
     });
 })
