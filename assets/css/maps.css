@@ -4,7 +4,8 @@
     float: left;
 }
 
-#showWeather {
-    width: 25%;
+#weather {
+    width: 100;
     height: 530px;
+    float: left;
 }
