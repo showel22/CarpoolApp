@@ -1,12 +1,11 @@
 $(document).ready(() => {
 
-    /*
     firebase.auth().onAuthStateChanged(function (user) {
         if (!user) {
             CURRENT_PAGE.login();
         }
     });
-    */
+
 
     var authentication = firebase.auth();
     var googleProvider = new firebase.auth.GoogleAuthProvider();
