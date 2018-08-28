@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var location;
-
+    $('select').formSelect();
     /*
         $('select[name="locationDropdown"]').change(function () {
             location = $(this).val();
