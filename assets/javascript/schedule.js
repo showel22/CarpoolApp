@@ -27,8 +27,7 @@ $(document).ready(function(){
     $('#backToSchedule').click(function(){
         TRIP = '';
         CURRENT_PAGE.schedule();
-    });
-
+      });
     database.ref('/trips').on('child_added', function(snapshot){
         var sv = snapshot.val();
 
@@ -80,7 +79,4 @@ $(document).ready(function(){
         instance.close();
 
     });
-
-    
-
 });
