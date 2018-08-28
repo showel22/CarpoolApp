@@ -82,7 +82,8 @@
                 <!-- Content added by javascript -->
             </tbody>
         </table>
-        <button id="openForm" data-target="scheduleForm" type="button" class="btn-floating btn-large teal right waves-effect waves-light modal-trigger">
+        <button id="openForm" data-target="scheduleForm" type="button" class="tooltipped btn-floating btn-large teal right waves-effect waves-light modal-trigger"
+         data-position="bottom" data-tooltip="Add Your Trip" >
              <i class="large fa fa-plus"></i>
         </button>
 
@@ -141,8 +142,18 @@
                 </a>
             </div>
         </div>
-        <div class="row">
 
+        <div class="row">
+            <ul id="riders" class="collection with-header">
+                <li class="collection-header"><h5 class="center">Riders</h5></li>
+                <!-- Content Added by javascript-->
+            </ul>
+            <button id="joinCarpool" class="btn-floating btn-large teal right waves-effect waves-light tooltipped" data-position="bottom" data-tooltip="Join Carpool" >
+                <i class="large fa fa-plus"></i>
+            </button>
+        </div>
+
+        <div class="row">
             <!-- Chat Component -->
             <div class="col s6 push-s6">
                 <div id="chat" class="chat ">

@@ -13,3 +13,12 @@
 .highlight:hover{
     cursor: pointer;
 }
+
+#riders {
+    margin-bottom: 0;
+}
+
+.btn-floating {
+    margin-top: -33px;
+    margin-right: -26px;
+}
