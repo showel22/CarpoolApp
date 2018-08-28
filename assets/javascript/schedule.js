@@ -123,9 +123,9 @@ $(document).ready(function () {
             for (rider in riders) {
                 var listItem = $('<li class="collection-item avatar rider">');
                 if (riders[rider].driver) {
-                    var icon = $('<i class="fa fa-car circle">');
+                    var icon = $('<i class="fa fa-car circle cyan">');
                 } else {
-                    var icon = $('<i class="fa fa-user circle">');
+                    var icon = $('<i class="fa fa-user circle teal">');
                 }
                 var name = $('<span class="title">');
                 name.text(riders[rider].name);
