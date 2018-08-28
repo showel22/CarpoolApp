@@ -62,7 +62,7 @@ $(document).ready(() => {
         }
         var chatBox = $('<li class="collection-item avatar white-text teal lighten-3 chat-item">');
         var chatBoxText = $('<p class="left-align">');
-        var img = $('<span class="circle center-align teal white-text valign-wrapper innitial">');
+        var img = $('<span class="userInit circle center-align teal white-text valign-wrapper innitial">');
         img.text(chat.innitial);
         chatBoxText.text(chat.text);
         chatBox.append(img);
@@ -108,6 +108,8 @@ $(document).ready(() => {
     });
 
     $(document).on('click', '.tripRow', function(event){
+         database.ref('chats/' + TRIP).off();
+         view.empty();
         showChat();
     }.bind(this));
 

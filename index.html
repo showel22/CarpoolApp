@@ -41,16 +41,19 @@
 
 <body>
 
-    <nav class="navbar-fixed">
+    <nav id="topNav" class="navbar-fixed">
         <div class="nav-wrapper teal">
-            <a href="#" class="brand-logo">How will I get to class?</a>
-            <p id="currentUser"></p>
+            <a href="#" class="brand-logo"> &nbsp; How will I get to class?</a>
+            <ul class="right">
+                <li><a class="waves-effect waves-light">Notifications</a></li>
+                <li><a id="logout" class="waves-effect waves-light">Logout</a></li>
+            </ul>
         </div>
     </nav>
 
 
     <!-- Authentication Component -->
-    <div id="authComponent" class="container hide">
+    <div id="authComponent" class=" hide">
         <div class="row">
             <div class="col s12 offset-m3 m6">
                 <div class="card center center-align">
@@ -67,7 +70,7 @@
     </div>
 
     <!-- Schedule Component -->
-    <div id="scheduleComponent" class="container hide">
+    <div id="scheduleComponent" class="scheduleContainer hide">
         <table class="table highlight">
             <thead>
                 <tr class="">
@@ -83,7 +86,7 @@
             </tbody>
         </table>
         <button id="openForm" data-target="scheduleForm" type="button" class="tooltipped btn-floating btn-large teal right waves-effect waves-light modal-trigger"
-         data-position="bottom" data-tooltip="Add Your Trip" >
+            data-position="bottom" data-tooltip="Add Your Trip">
              <i class="large fa fa-plus"></i>
         </button>
 
@@ -131,7 +134,7 @@
     </div>
 
     <!--Location Source Selection-->
-    <div id="tripComponent" class="container hide">
+    <div id="tripComponent" class="hide">
         <br />
         <div class="row">
             <div class="col s4">
@@ -144,18 +147,20 @@
         </div>
 
         <div class="row">
-            <ul id="riders" class="collection with-header">
-                <li class="collection-header"><h5 class="center">Riders</h5></li>
-                <!-- Content Added by javascript-->
-            </ul>
-            <button id="joinCarpool" class="btn-floating btn-large teal right waves-effect waves-light tooltipped" data-position="bottom" data-tooltip="Join Carpool" >
+            <div class="col s9">
+                <ul id="riders" class="collection with-header">
+                    <!-- Content Added by javascript-->
+                </ul>
+                <button id="joinCarpool" class="btn-floating btn-large teal right waves-effect waves-light tooltipped" data-position="bottom"
+                    data-tooltip="Join Carpool">
                 <i class="large fa fa-plus"></i>
             </button>
+            </div>
         </div>
 
         <div class="row">
-            <!-- Chat Component -->
-            <div class="col s6 push-s6">
+
+            <ul id="nav-mobile" class="sidenav sidenav-fixed right" style="transform: translateX(0px);">
                 <div id="chat" class="chat ">
                     <ul id="chatBoxes" class="chat collection">
                         <!-- Content Added by Javascript -->
@@ -169,18 +174,15 @@
                         </button>
                     </form>
                 </div>
-            </div>
-
-            <div class="col s6 pull-s6">
-                <div id='map'></div>
-            </div>
+            </ul>
 
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col s6 push-s6">
-                    <div id='weather'></div>
-                </div>
+        <div class="row">
+            <div class="col s3">
+                <div id='weather'></div>
+            </div>
+            <div class="col s6">
+                <div id='map'></div>
             </div>
         </div>
     </div>

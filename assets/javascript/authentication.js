@@ -38,4 +38,10 @@ $(document).ready(() => {
         });
     });
 
+    $('#logout').click(function () {
+        authentication.signOut().then(function () {
+            // Sign-out successful.
+        })
+    });
+
 }); 

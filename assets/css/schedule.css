@@ -2,6 +2,10 @@
     margin-bottom: 100px;
 }
 
+.scheduleContainer {
+    padding: 50px;
+}
+
 #scheduleForm {
     height: 400px;
 }
@@ -19,6 +23,15 @@
 }
 
 .btn-floating {
-    margin-top: -33px;
+    margin-top: -20px;
     margin-right: -26px;
+}
+
+#nav-mobile {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.collection-item {
+    min-height: 60px !important;
 }
