@@ -8,6 +8,11 @@ $(document).ready(function () {
         yearRange: 1
     });
 
+    $('.sidenav').sidenav({
+        edge: 'right',
+        preventScrolling: true
+    });
+
     $('.timepicker').timepicker();
 
     $('.modal').modal();

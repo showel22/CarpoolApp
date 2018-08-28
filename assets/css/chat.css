@@ -1,6 +1,11 @@
 #chat {
-    height: 450px;
+    padding-top: 60px;
+    height: 90%;
     overflow: scroll;
+}
+
+.chatInput {
+    height: 10%;
 }
 
 #chat li {
