@@ -40,16 +40,22 @@ $(document).ready(function () {
     });
 
     $('#joinCarpool').click(function (event) {
-        database.ref('/riders/' + TRIP).push({
-            name: USER.name,
-            userId: USER.uid,
-            driver: false,
-            approved: false
+        database.ref('/riders/' + TRIP).orderByChild('userId').equalTo(USER.uid).limitToFirst(1).once('value', function (snapshot) {
+            var sv = snapshot.val();
+            if (Object.keys(sv).length === 0) {
+                database.ref('/riders/' + TRIP).push({
+                    name: USER.name,
+                    userId: USER.uid,
+                    driver: false,
+                    approved: false
+                });
+                updateRiders(USER.uid);
+            }
         });
-        updateRiders(USER.uid);
+
     });
 
-    $('#riders').on('click', '.approve', function(event){
+    $('#riders').on('click', '.approve', function (event) {
         var element = $(event.target);
         var rider = element.attr('data-rider');
 
@@ -137,7 +143,7 @@ $(document).ready(function () {
                 listItem.append(icon);
                 listItem.append(name);
                 if (!riders[rider].approved && driverId === USER.uid && !riders[rider].driver) {
-                    var button = $('<button data-rider="'+ rider +'" class="approve btn waves-effect waves-light green secondary-content">');
+                    var button = $('<button data-rider="' + rider + '" class="approve btn waves-effect waves-light green secondary-content">');
                     button.text('Approve');
                     listItem.append(button);
                 } else if (riders[rider].driver) {
