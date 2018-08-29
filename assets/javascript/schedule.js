@@ -50,7 +50,7 @@ $(document).ready(function () {
                     approved: false
                 });
 
-                database.ref('/trips/' + TRIP).once('value', function(snapshot){
+                database.ref('/trips/' + TRIP).once('value', function (snapshot) {
                     var sv = snapshot.val();
                     updateRiders(sv.driver);
                 });
@@ -70,25 +70,28 @@ $(document).ready(function () {
         updateRiders(USER.uid);
     });
 
-    database.ref('/trips').on('child_added', function (snapshot) {
+    database.ref('/trips').orderByChild('orderTimeStamp').on('child_added', function (snapshot) {
         var sv = snapshot.val();
 
-        var row = $('<tr>');
-        var driver = $('<td>').text(sv.driverName);
-        var seatsRemaining = $('<td>').text(sv.seatNum);
-        var departureDate = $('<td>').text(sv.departureDate);
-        var departureTime = $('<td>').text(sv.departureTime);
-        var startLocation = $('<td>').text(sv.startLocation);
-        row.attr('data-id', snapshot.key);
-        row.attr('data-driver', sv.driver);
-        row.addClass('tripRow');
-        row.append(driver);
-        row.append(seatsRemaining);
-        row.append(departureDate);
-        row.append(departureTime);
-        row.append(startLocation);
+        if (moment(sv.orderTimeStamp).diff(moment()) > 0) {
+            var row = $('<tr>');
+            var driver = $('<td>').text(sv.driverName);
+            var seatsRemaining = $('<td>').text(sv.seatNum);
+            var departureDate = $('<td>').text(sv.departureDate);
+            var departureTime = $('<td>').text(sv.departureTime);
+            var startLocation = $('<td>').text(sv.startLocation);
+            row.attr('data-id', snapshot.key);
+            row.attr('data-driver', sv.driver);
+            row.addClass('tripRow');
+            row.append(driver);
+            row.append(seatsRemaining);
+            row.append(departureDate);
+            row.append(departureTime);
+            row.append(startLocation);
 
-        $('#scheduleBody').append(row);
+            $('#scheduleBody').append(row);
+        }
+
     });
 
     $('#addTrip').click(function (event) {
@@ -110,6 +113,7 @@ $(document).ready(function () {
             startLocation: startLocation,
             departureDate: leavingDate,
             departureTime: leavingTime,
+            orderTimeStamp: moment(leavingDate + ' ' + leavingTime, 'MMM DD, YYYY hh:mm A').valueOf(),
             timestamp: firebase.database.ServerValue.TIMESTAMP
         }).key;
 
