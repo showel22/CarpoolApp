@@ -51,5 +51,5 @@ USER = {
 
 $(document).ready(function () {
     CURRENT_PAGE.login();
-    CURRENT_PAGE.schedule();
+   // CURRENT_PAGE.schedule();
 });

@@ -24,10 +24,13 @@ $(document).ready(() => {
         if (conversation.length > 1) {
             previousChat = conversation[conversation.length - 2];
         }
-        var chatBox = $('<li class="collection-item white-text cyan lighten-3">');
-        var chatBoxText = $('<p class="right-align">');
+        var chatBox = $('<li class="card-panel white-text blue">');
+        var chatRow = $('<div class="row chat-row">');
+        var chatBoxText = $('<p class="chat-text right-align col s12">');
         chatBoxText.text(chat.text);
-        chatBox.append(chatBoxText);
+        chatRow.append(chatBoxText);
+        chatBox.append(chatRow);
+        chatBox.addClass('space');
 
         if (!!previousChat && previousChat.user === chat.user && moment(chat.timestamp).diff(moment(previousChat.timestamp)) > 1000 * 60) {
             var metaContainer = $('<div class="title">');
@@ -35,18 +38,21 @@ $(document).ready(() => {
             timestamp.text(moment(chat.timestamp).calendar());
             metaContainer.append(timestamp);
             chatBox.addClass('chat-item');
+            chatBox.removeClass('space');
         } else if (!!previousChat && previousChat.user != chat.user) {
             var metaContainer = $('<div class="title">');
             var timestamp = $('<div class="center-align meta-text">');
             timestamp.text(moment(chat.timestamp).calendar());
             metaContainer.append(timestamp);
             chatBox.addClass('chat-item');
+            chatBox.removeClass('space');
         } else if (!previousChat) {
             var metaContainer = $('<div class="title">');
             var timestamp = $('<div class="center-align meta-text">');
             timestamp.text(moment(chat.timestamp).calendar());
             metaContainer.append(timestamp);
             chatBox.addClass('chat-item');
+            chatBox.removeClass('space');
         }
 
         chatBox.prepend(metaContainer);
@@ -60,13 +66,17 @@ $(document).ready(() => {
         if (conversation.length > 1) {
             previousChat = conversation[conversation.length - 2];
         }
-        var chatBox = $('<li class="collection-item avatar white-text teal lighten-3 chat-item">');
-        var chatBoxText = $('<p class="left-align">');
-        var img = $('<span class="userInit circle center-align teal white-text valign-wrapper innitial">');
+        var chatBox = $('<li class="card-panel avatar white-text deep-orange chat-item">');
+        var row = $('<div class="row chat-row">');
+        var chatBoxText = $('<p class="chat-text left-align col s9">');
+        var imgContainer = $('<div class="col s3">');
+        var img = $('<div class="userInit circle center-align deep-orange accent-4 white-text innitial">');
         img.text(chat.innitial);
         chatBoxText.text(chat.text);
-        chatBox.append(img);
-        chatBox.append(chatBoxText);
+        imgContainer.append(img);
+        row.append(imgContainer);
+        row.append(chatBoxText);
+        chatBox.append(row);
 
         if (!!previousChat && previousChat.user === chat.user && moment(chat.timestamp).diff(moment(previousChat.timestamp)) > 1000 * 60) {
             var metaContainer = $('<div class="title meta-text">');

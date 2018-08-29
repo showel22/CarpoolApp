@@ -21,10 +21,6 @@
     border-radius: 5px;
 }
 
-.innitial {
-    line-height: 40px;
-}
-
 .meta-text {
     font-size: 12px !important;
 }
@@ -32,4 +28,32 @@
 .chat-item {
     margin-top: 5px !important;
     border: none !important;
+}
+
+.card-panel {
+    padding: 5px !important;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+.chat-item{
+    margin-top: 5px !important;
+}
+
+.userInit {
+    margin-top: 15px;
+    width: 50px;
+    height: 50px;
+}
+
+.title {
+    height: 15px;
+}
+
+.chat-row {
+    margin-bottom: 0 !important;
+}
+
+.space {
+    border-radius: 0 0 5px 5px !important;
 }
