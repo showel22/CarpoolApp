@@ -42,14 +42,18 @@ $(document).ready(function () {
     $('#joinCarpool').click(function (event) {
         database.ref('/riders/' + TRIP).orderByChild('userId').equalTo(USER.uid).limitToFirst(1).once('value', function (snapshot) {
             var sv = snapshot.val();
-            if (Object.keys(sv).length === 0) {
+            if (!sv) {
                 database.ref('/riders/' + TRIP).push({
                     name: USER.name,
                     userId: USER.uid,
                     driver: false,
                     approved: false
                 });
-                updateRiders(USER.uid);
+
+                database.ref('/trips/' + TRIP).once('value', function(snapshot){
+                    var sv = snapshot.val();
+                    updateRiders(sv.driver);
+                });
             }
         });
 
