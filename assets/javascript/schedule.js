@@ -70,7 +70,7 @@ $(document).ready(function () {
         updateRiders(USER.uid);
     });
 
-    database.ref('/trips').on('child_added', function (snapshot) {
+    database.ref('/trips').orderByChild('orderTimeStamp').on('child_added', function (snapshot) {
         var sv = snapshot.val();
 
         var row = $('<tr>');
@@ -110,6 +110,7 @@ $(document).ready(function () {
             startLocation: startLocation,
             departureDate: leavingDate,
             departureTime: leavingTime,
+            orderTimeStamp: moment(leavingDate + ' ' + leavingTime, 'MMM DD, YYYY hh:mm A').valueOf(),
             timestamp: firebase.database.ServerValue.TIMESTAMP
         }).key;
 
