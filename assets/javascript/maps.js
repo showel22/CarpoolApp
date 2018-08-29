@@ -1,6 +1,12 @@
 $(document).ready(function () {
     var location;
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
     /*
         $('select[name="locationDropdown"]').change(function () {
             location = $(this).val();
@@ -8,6 +14,8 @@ $(document).ready(function () {
     */
     $(document).on('click', '.tripRow', function (e) {
         var id = $(event.target).siblings('td')[3].textContent;
+        console.log("The id should be below");
+        console.log(id);
         L.mapquest.key = 'R2POye2cSeMlUA3OSTAUv7Tr5qN3UvAL';
 
         addDirections(id);
