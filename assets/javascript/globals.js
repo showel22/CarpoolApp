@@ -25,12 +25,14 @@ var CURRENT_PAGE = {
     },
     schedule: function () {
         this.page = 'SCHEDULE';
+        updateNotificationNumber();
         $('#authComponent').addClass('hide');
         $('#scheduleComponent').removeClass('hide');
         $('#tripComponent').addClass('hide');
     },
     trip: function () {
         this.page = "TRIP";
+        updateNotificationNumber();
         $('#authComponent').addClass('hide');
         $('#scheduleComponent').addClass('hide');
         $('#tripComponent').removeClass('hide');
@@ -51,5 +53,5 @@ USER = {
 
 $(document).ready(function () {
     CURRENT_PAGE.login();
-  // CURRENT_PAGE.schedule();
+    //CURRENT_PAGE.schedule();
 });

@@ -52,6 +52,10 @@ $(document).ready(function () {
 
                 database.ref('/trips/' + TRIP).once('value', function (snapshot) {
                     var sv = snapshot.val();
+                    database.ref('/notifications/' + sv.driver).push({
+                        text: USER.name + " has joined your trip.",
+                        trip: TRIP
+                    });
                     updateRiders(sv.driver);
                 });
             }
@@ -65,6 +69,11 @@ $(document).ready(function () {
 
         database.ref('/riders/' + TRIP + '/' + rider).update({
             approved: true
+        });
+
+        database.ref('/notifications/' + rider).push({
+            text: USER.name + " approved your trip.",
+            trip: TRIP
         });
 
         updateRiders(USER.uid);
