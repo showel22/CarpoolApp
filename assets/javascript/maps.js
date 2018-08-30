@@ -51,12 +51,20 @@ $(document).ready(function () {
         }
 
         function showWeather(data) {
-            return '<h4>Current Conditions:</h4>' +
+            return '<div class="row">' +
+                '<div class="col s6">' +
+                '<div class="card blue-grey darken-1">' +
+                '<div class="card-content white-text">' +
+                '<span class="card-title">Current Conditions:</span>' +
                 "<img src='https://openweathermap.org/img/w/" + data.weather[0].icon + ".png'>"
                 + data.weather[0].main +
-                "<h6>Humidity: " + data.main.humidity + "%</h6>" +
-                "<h6>Sunrise: " + toTimeString(data.sys.sunrise) + "</h6>" +
-                "<h6>Sunset: " + toTimeString(data.sys.sunset) + "</h6>";
+                "<h6><strong>Humidity</strong>: " + data.main.humidity + "%</h6>" +
+                "<h6><strong>Sunrise</strong>: " + toTimeString(data.sys.sunrise) + "</h6>" +
+                "<h6><strong>Sunset</strong>: " + toTimeString(data.sys.sunset) + "</h6>" +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>';
 
         }
 
