@@ -115,11 +115,21 @@ $(document).ready(() => {
             photoURL: (USER.photoURl ? USER.photoURl : ''),
             timestamp: firebase.database.ServerValue.TIMESTAMP
         });
+
+        database.ref('/trips/' + TRIP).once('value', function (snapshot) {
+            var sv = snapshot.val();
+            if (sv.driver != USER.uid) {
+                database.ref('/notifications/' + sv.driver).push({
+                    text: USER.name + " commented on your trip.",
+                    trip: TRIP
+                });
+            }
+        });
     });
 
-    $(document).on('click', '.tripRow', function(event){
-         database.ref('chats/' + TRIP).off();
-         view.empty();
+    $(document).on('click', '.tripRow', function (event) {
+        database.ref('chats/' + TRIP).off();
+        view.empty();
         showChat();
     }.bind(this));
 

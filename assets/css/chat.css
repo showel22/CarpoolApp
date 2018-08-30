@@ -21,8 +21,13 @@
     border-radius: 5px;
 }
 
+.chat-text {
+    line-height: normal;
+}
+
 .meta-text {
     font-size: 12px !important;
+    margin-bottom: 10px;
 }
 
 .chat-item {
